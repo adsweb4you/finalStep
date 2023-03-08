@@ -1,7 +1,7 @@
 import { Reviews , Segment } from "./helpers.js";
 
 export async function CategyWithSub() {
-  let AllCat = await fetch("//178.134.32.242/rest/categories", {
+  let AllCat = await fetch("http://178.134.32.242/rest/categories", {
     method: "GET",
   });
 
