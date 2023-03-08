@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Project</title>
+    <!-- bootstrap  -->
+    <link rel="stylesheet" href="public/css/bootstrap.min.css" />
+
+    <!-- slider plugin-->
+    <link rel="stylesheet" href="public/css/nouislider.min.css" />
+
+    <!-- costum style -->
+    <link rel="stylesheet" href="public/css/app.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Shop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form action="" class="mx-auto d-flex livesearch position-relative">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search..."
+              aria-label="Search"
+            />
+            <button class="btn btn-search" type="submit">
+              <img src="public/images/icons/search.svg" alt="" />
+            </button>
+          </form>
+          <a href="">
+            <img src="public/images/icons/bag.svg" alt="" />
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!-- section detals -->
+    <section class="detals">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <img class="poste"
+              src=" "
+              alt=""
+            />
+          </div>
+          <div class="col-lg-7">
+            <div class="prodinfo">
+              <h1> </h1>
+
+              <p>
+              
+              </p>
+
+              <a href="" class="more">Show more</a>
+              <div class="row prsec">
+                <div class="col-lg-4">
+                  <p class="price"></p>
+                </div>
+                <div class="col-lg-8">
+                  <button class="btn addcard">კალათაში დამატება</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- tabs -->
+
+        <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="home-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#home-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="home-tab-pane"
+              aria-selected="true"
+            >
+               Details
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
+          Reviews 
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home-tab-pane"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+            tabindex="0"
+          >
+        <p class="tabp"> </p>
+        </div>
+          <div
+            class="tab-pane fade"
+            id="profile-tab-pane"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+            tabindex="0"
+          >
+        
+          <div class="rews">
+             <h3>Anonymous</h3>
+             <div class="stars">
+                <img src="public/images/icons/star.svg" alt="">
+                <img src="public/images/icons/star.svg" alt="">
+                <img src="public/images/icons/star.svg" alt="">
+                <img src="public/images/icons/starempt.svg" alt="">
+             </div>
+             <div class="comment">
+                <p>Fine thing</p>
+             </div>
+          </div>
+          <div class="rews">
+            <h3>Anonymous</h3>
+            <div class="stars">
+               <img src="public/images/icons/star.svg" alt="">
+               <img src="public/images/icons/star.svg" alt="">
+               <img src="public/images/icons/star.svg" alt="">
+               <img src="public/images/icons/starempt.svg" alt="">
+            </div>
+            <div class="comment">
+               <p>Fine thing</p>
+            </div>
+         </div>
+        </div>
+        </div>
+
+        <!-- / -->
+      </div>
+    </section>
+    <!-- end  detals -->
+
+    <!-- bootstrap js -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <!-- costum js -->
+    <script type="module" src="public/js/app.js"></script>
+  </body>
+</html>

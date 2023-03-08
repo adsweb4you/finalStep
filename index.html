@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Project</title>
+    <!-- bootstrap  -->
+    <link rel="stylesheet" href="public/css/bootstrap.min.css" />
+    <!-- costum style -->
+    <link rel="stylesheet" href="public/css/app.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Shop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form action="" class="mx-auto d-flex livesearch position-relative">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search..."
+              aria-label="Search"
+            />
+            <button class="btn btn-search" type="submit">
+             <img src="public/images/icons/search.svg" alt="">
+            </button>
+          </form>
+         <a href="">
+            <img src="public/images/icons/bag.svg" alt="">
+         </a>
+        </div>
+      </div>
+    </nav>
+<!-- end navbar -->
+
+
+<!-- carusel block -->
+<header>
+  <div class="container">
+     <div id="stepcarusel" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#stepcarusel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#stepcarusel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#stepcarusel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="background-image: url('https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg');">
+           
+            <div class="carusel-content">
+                <h1>კომპიუტერები, ნოუთბუქები და სხვა  </h1>
+                <a href="">სრულად ნახვა <img src="public/images/icons/rgh.svg" alt=""></a>
+            </div>
+            
+          </div>
+          <div class="carousel-item" style="background-image: url('https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg');">
+            
+            
+          </div>
+          <div class="carousel-item" style="background-image: url('https://cdn.pixabay.com/photo/2015/10/30/20/13/sunrise-1014712__340.jpg');">
+           
+           
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#stepcarusel" data-bs-slide="prev">
+           <img src="public/images/icons/left.svg" alt="">
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#stepcarusel" data-bs-slide="next">
+            <img src="public/images/icons/right.svg" alt="">
+        </button>
+      </div>
+  </div>
+   
+</header>
+
+<!-- end carusel -->
+<section class="products">
+    <div class="container">
+    <div class="row prodcat">
+    <!-- category -->
+
+    <div class="col-lg-3">
+      <ul class="category ps-0">
+ <!-- category  load -->
+      </ul>
+    </div>
+
+    <!-- endcategory -->
+
+    <!-- content -->
+    <div class="col-lg-9">
+        <div class="row content">
+         
+  
+        </div>
+    </div>
+    <!-- endcontent -->
+    </div>
+</div>
+</section>
+
+
+    <!-- bootstrap js -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <!-- costum js -->
+    <script type="module" src="public/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Final Project</title>
+    <!-- bootstrap  -->
+    <link rel="stylesheet" href="public/css/bootstrap.min.css" />
+
+    <!-- slider plugin-->
+    <link rel="stylesheet" href="public/css/nouislider.min.css" />
+
+    <!-- costum style -->
+    <link rel="stylesheet" href="public/css/app.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Shop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form action="" class="mx-auto d-flex livesearch position-relative">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search..."
+              aria-label="Search"
+            />
+            <button class="btn btn-search" type="submit">
+              <img src="public/images/icons/search.svg" alt="" />
+            </button>
+          </form>
+          <a href="">
+            <img src="public/images/icons/bag.svg" alt="" />
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!-- section cart -->
+    <section class="cart">
+      <div class="container">
+        <div class="col-lg-10 mx-auto">
+          <h1 class="heading">Your Order</h1>
+            <div class="cartoutput"></div>
+          <!-- <div class="row prods">
+            <div class="col-lg-3 ps-lg-0">
+              <img
+                class="prodimg"
+                src="https://static.wixstatic.com/media/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png/v1/fill/w_320,h_245,q_90/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png"
+                alt=""
+              />
+            </div>
+            <div class="col-lg-4">
+              <div class="text-body">
+                <h2>
+                  Acer laptop NM-240 i7-7700 <br />
+                  RTX 2070 FHD
+                </h2>
+                <div class="star">
+                  <img src="public/images/icons/star.svg" alt="" />
+                  <img src="public/images/icons/star.svg" alt="" />
+                  <img src="public/images/icons/star.svg" alt="" />
+                  <img src="public/images/icons/starempt.svg" alt="" />
+                </div>
+                <small>Reviews 3</small>
+              </div>
+            </div>
+            <div class="col-lg-2 pe-lg-0">
+              <div class="quant">
+                <div class="update">
+                  <button class="plus">
+                    <svg
+                      width="10"
+                      height="4"
+                      viewBox="0 0 10 4"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.232 0.528H9.164V3.944H0.232V0.528Z"
+                        fill="#121212"
+                      />
+                    </svg>
+                  </button>
+                  <span>1</span>
+                  <button class="plus">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.268 4.996H12.496V8.412H8.268V12.78H4.6V8.412H0.344V4.996H4.6V0.627999H8.268V4.996Z"
+                        fill="#FB6F20"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 ps-lg-0">
+              <div class="price-sec d-flex align-items-center">
+                <p class="mb-0">2200 GEL</p>
+                <button class="btn btnremove">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.7344 40.75C12.9531 40.75 12.2891 40.4766 11.7422 39.9297C11.1953 39.3828 10.9219 38.7188 10.9219 37.9375V11.2188H9V8.40625H17.8125V7H30.1875V8.40625H39V11.2188H37.0781V37.9375C37.0781 38.6875 36.7969 39.3438 36.2344 39.9062C35.6719 40.4688 35.0156 40.75 34.2656 40.75H13.7344ZM34.2656 11.2188H13.7344V37.9375H34.2656V11.2188ZM18.7031 33.9062H21.5156V15.2031H18.7031V33.9062ZM26.4844 33.9062H29.2969V15.2031H26.4844V33.9062Z"
+                      fill="#121212"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row prods">
+            <div class="col-lg-3 ps-lg-0">
+              <img
+                class="prodimg"
+                src="https://static.wixstatic.com/media/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png/v1/fill/w_320,h_245,q_90/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png"
+                alt=""
+              />
+            </div>
+            <div class="col-lg-4">
+              <div class="text-body">
+                <h2>
+                  Acer laptop NM-240 i7-7700 <br />
+                  RTX 2070 FHD
+                </h2>
+                <div class="star">
+                  <img src="public/images/icons/star.svg" alt="" />
+                  <img src="public/images/icons/star.svg" alt="" />
+                  <img src="public/images/icons/star.svg" alt="" />
+                  <img src="public/images/icons/starempt.svg" alt="" />
+                </div>
+                <small>Reviews 3</small>
+              </div>
+            </div>
+            <div class="col-lg-2 pe-lg-0">
+              <div class="quant">
+                <div class="update">
+                  <button class="plus">
+                    <svg
+                      width="10"
+                      height="4"
+                      viewBox="0 0 10 4"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0.232 0.528H9.164V3.944H0.232V0.528Z"
+                        fill="#121212"
+                      />
+                    </svg>
+                  </button>
+                  <span>1</span>
+                  <button class="plus">
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.268 4.996H12.496V8.412H8.268V12.78H4.6V8.412H0.344V4.996H4.6V0.627999H8.268V4.996Z"
+                        fill="#FB6F20"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 ps-lg-0">
+              <div class="price-sec d-flex align-items-center">
+                <p class="mb-0">2200 GEL</p>
+                <button class="btn btnremove">
+                  <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.7344 40.75C12.9531 40.75 12.2891 40.4766 11.7422 39.9297C11.1953 39.3828 10.9219 38.7188 10.9219 37.9375V11.2188H9V8.40625H17.8125V7H30.1875V8.40625H39V11.2188H37.0781V37.9375C37.0781 38.6875 36.7969 39.3438 36.2344 39.9062C35.6719 40.4688 35.0156 40.75 34.2656 40.75H13.7344ZM34.2656 11.2188H13.7344V37.9375H34.2656V11.2188ZM18.7031 33.9062H21.5156V15.2031H18.7031V33.9062ZM26.4844 33.9062H29.2969V15.2031H26.4844V33.9062Z"
+                      fill="#121212"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div> -->
+
+          <h1 class="heading">Billing info</h1>
+
+          <form action="" class="order">
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="">Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First name"
+                  aria-label="First name"
+                />
+              </div>
+              <div class="col-lg-6">
+                <label for="">Phone number:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last name"
+                  aria-label="Last name"
+                />
+              </div>
+              <div class="col-lg-6">
+                <label for="">Mail:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First name"
+                  aria-label="First name"
+                />
+              </div>
+              <div class="col-lg-6">
+                <label for="">Adress:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last name"
+                  aria-label="Last name"
+                />
+              </div>
+            </div>
+            <button class="btn makeorder">Order</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- endsec -->
+
+    <!-- bootstrap js -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <!-- costum js -->
+    <script type="module" src="public/js/app.js"></script>
+  </body>
+</html>
