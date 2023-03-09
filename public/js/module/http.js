@@ -1,7 +1,7 @@
 import { Reviews , Segment } from "./helpers.js";
 
 export async function CategyWithSub() {
-  let AllCat = await fetch("http://178.134.32.242/rest/categories", {
+  let AllCat = await fetch("https://stepprojects.ge/rest/categories", {
     method: "GET",
   });
 
@@ -9,7 +9,7 @@ export async function CategyWithSub() {
 
   for (const Cat of JsonCat) {
     let CatSub = await fetch(
-      "http://178.134.32.242/rest/subCategories?categoryId=" + Cat.id,
+      "https://stepprojects.ge/rest/subCategories?categoryId=" + Cat.id,
       {
         method: "GET",
       }
@@ -29,7 +29,7 @@ export async function CategyWithSub() {
 }
 
 export async function GetAllProduct() {
-  let Products = await fetch(" http://178.134.32.242/rest/products", {
+  let Products = await fetch(" https://stepprojects.ge/rest/products", {
     method: "GET",
   });
 
@@ -40,22 +40,33 @@ export async function GetAllProduct() {
 export async function GetDetalsProduct() {
     let id = Segment().split('?')[1];
  
-    let Products = await fetch("http://178.134.32.242/rest/product/"+id, {
+    let Products = await fetch("https://stepprojects.ge/rest/product/"+id, {
       method: "GET",
     });
   
    return await Products.json();
   }
 
+  export async function GeReview() {
+    let id = Segment().split('?')[1];
+ 
+    let Products = await fetch(`https://stepprojects.ge/rest/product/${id}/getReviews`, {
+      method: "GET",
+    });
+  
+   return await Products.json();
+  }
+
+
   export async function GetCart() {
-    let Carts = await fetch("http://178.134.32.242/rest/getBasket", {
+    let Carts = await fetch("https://stepprojects.ge/rest/getBasket", {
       method: "GET",
     });
    return await Carts.json();
   }
 
   export async function CartUpdate(id, quantity)  {
-    let Respons = await fetch(`http://178.134.32.242/rest/basket/${id}/update?quantity=${quantity}`, {
+    let Respons = await fetch(`https://stepprojects.ge/rest/basket/${id}/update?quantity=${quantity}`, {
       method:'PUT',
       
     })
@@ -64,7 +75,7 @@ export async function GetDetalsProduct() {
   }
 
   export async function CartDelate(id)  {
-    let Respons = await fetch(`http://178.134.32.242/rest/basket/${id}/remove`, {
+    let Respons = await fetch(`https://stepprojects.ge/rest/basket/${id}/remove`, {
       method: "DELETE",
 
       headers:{
@@ -73,4 +84,23 @@ export async function GetDetalsProduct() {
       }
     });
    return await Respons.json();
+  }
+
+
+  export async function GetBrand()  {
+    let Brands = await fetch(`https://stepprojects.ge/rest/brands`, {
+      method: "GET",
+ 
+    });
+   return await Brands.json();
+  }
+
+
+
+  export async function BaseFilter(query)  {
+    let Response = await fetch(`https://stepprojects.ge/rest/products`+query, {
+      method: "GET",
+ 
+    });
+   return await Response.json();
   }

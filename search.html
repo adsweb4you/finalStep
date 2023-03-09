@@ -65,67 +65,15 @@
     <div class="col-lg-3">
         <form action="" class="filters">
       <ul class="category  ps-0">
-        <li class="inside">
-            <a href="">category</a>
-             <ul>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-             </ul>
-        </li>
-        <li class="inside">
-            <a href="">category</a>
-             <ul>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-             </ul>
-        </li>
-        <li class="inside">
-            <a href="">category</a>
-             <ul>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-             </ul>
-        </li>
-        <li class="inside">
-            <a href="">category</a>
-             <ul>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-             </ul>
-        </li>
-        <li class="inside">
-            <a href="">category</a>
-             <ul>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-                <li><a href="">subcat</a></li>
-             </ul>
-        </li>
+  
       </ul>
       <div class="filltblock">
           <p class="fillter-name">By Brand</p>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="chk1">
-            <label class="form-check-label" for="chk1">
-                Brand
-            </label>
+          <div class="bybrand">
+
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="chk3">
-            <label class="form-check-label" for="chk3">
-                Brand
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="chk4">
-            <label class="form-check-label" for="chk4">
-                Brand
-            </label>
-          </div>
+          
+         
       </div>
 
       <div class="filltblock range">
@@ -133,9 +81,9 @@
    
         <div class="d-flex">
             <span>FROM</span>        
-            <input type="number" class="form-control" id="min"  placeholder="0" step=".01">        
+            <input type="number" class="form-control" id="min" name="priceFrom"  placeholder="0" step=".01">        
             <span>TO</span>
-            <input type="number" class="form-control" id="max"  placeholder="1000" step=".01">
+            <input type="number" class="form-control" id="max" name="priceUntil"  placeholder="1000" step=".01">
         </div>
         <div class="row mt-3">
             <div class="col-lg-9">
@@ -150,10 +98,11 @@
         <div class="filltblock  ">
             <p class="fillter-name">Rating</p>
             <div class="star">
-                <img src="public/images/icons/star.svg" alt="">
-                <img src="public/images/icons/star.svg" alt="">
-                <img src="public/images/icons/star.svg" alt="">
-                <img src="public/images/icons/starempt.svg" alt="">
+                <img data-star="1" src="public/images/icons/star.svg" alt="">
+                <img data-star="2" src="public/images/icons/star.svg" alt="">
+                <img data-star="3" src="public/images/icons/star.svg" alt="">
+                <img data-star="4" src="public/images/icons/star.svg" alt="">
+                <img data-star="5" src="public/images/icons/starempt.svg" alt="">
             </div>
 
         </div>
@@ -163,79 +112,10 @@
     <!-- endcategory -->
 
     <!-- content -->
-    <div class="col-lg-9">
-        <div class="row prods">
-            <div class="col-lg-3 ps-lg-0">
-                <img class="prodimg" src="https://static.wixstatic.com/media/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png/v1/fill/w_320,h_245,q_90/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png" alt="">
-            </div>
-            <div class="col-lg-5">
-               <div class="text-body">
-                <h2>Acer laptop NM-240 i7-7700 <br>
-                    RTX 2070 FHD</h2>
-                    <div class="star">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/starempt.svg" alt="">
-                        </div>
-                        <small>Reviews 3</small>
-               </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="price-sec">
-                    <p class="mb-0">2200 GEL</p>
-                    <button class="btn addcard">კალათაში დამატება</button>
-                </div>
-            </div>
-        </div>
-        <div class="row prods">
-            <div class="col-lg-3 ps-lg-0">
-                <img class="prodimg" src="https://static.wixstatic.com/media/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png/v1/fill/w_320,h_245,q_90/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png" alt="">
-            </div>
-            <div class="col-lg-5">
-               <div class="text-body">
-                <h2>Acer laptop NM-240 i7-7700 <br>
-                    RTX 2070 FHD</h2>
-                    <div class="star">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/starempt.svg" alt="">
-                        </div>
-                        <small>Reviews 3</small>
-               </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="price-sec">
-                    <p class="mb-0">2200 GEL</p>
-                    <button class="btn addcard">კალათაში დამატება</button>
-                </div>
-            </div>
-        </div>
-        <div class="row prods">
-            <div class="col-lg-3 ps-lg-0">
-                <img class="prodimg" src="https://static.wixstatic.com/media/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png/v1/fill/w_320,h_245,q_90/2cd43b_8ba844fdf6e048f6ad77f6a3c71fe22d~mv2.png" alt="">
-            </div>
-            <div class="col-lg-5">
-               <div class="text-body">
-                <h2>Acer laptop NM-240 i7-7700 <br>
-                    RTX 2070 FHD</h2>
-                    <div class="star">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/star.svg" alt="">
-                            <img src="public/images/icons/starempt.svg" alt="">
-                        </div>
-                        <small>Reviews 3</small>
-               </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="price-sec">
-                    <p class="mb-0">2200 GEL</p>
-                    <button class="btn addcard">კალათაში დამატება</button>
-                </div>
-            </div>
-        </div>
+    <div class="col-lg-9" id="innerSearch">
+     
+     
+       
     </div>
     <!-- endcontent -->
     </div>

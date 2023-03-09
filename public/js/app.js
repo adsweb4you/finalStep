@@ -1,18 +1,17 @@
-import { CategyWithSub , GetAllProduct , GetDetalsProduct , GetCart , CartUpdate , CartDelate } from "./module/http.js";
+import { 
+  CategyWithSub , 
+  GetAllProduct , 
+  GetDetalsProduct , 
+  GetCart ,
+  CartUpdate , 
+  CartDelate,
+  GetBrand,
+  GeReview,
+  BaseFilter
+ } from "./module/http.js";
 import { Reviews , Segment } from "./module/helpers.js";
 
-let catlist = document.querySelectorAll(".inside > a"); //category link
-
-for (const el of catlist) {
-  el.addEventListener("click", function (e) {
-    e.preventDefault();
-    let active = document.querySelector(".show");
-    if (this.parentElement.children[1].classList[0] != "show") {
-      active?.classList.remove("show");
-    }
-    this.parentElement.children[1].classList.toggle("show");
-  });
-}
+ 
 
 let showMore = document.querySelector(".more");
 
@@ -104,6 +103,27 @@ if(Segment().split('?')[0] !== 'detals.html'){
    img.src = Product.pic;
    descr.innerText = Product.description;
    tabtxt.innerText = Product.description;
+
+   let allReviews = await GeReview()
+   
+   let maxrev = Math.ceil(Math.max(...allReviews.map(o => o.rating)))
+ 
+   for (const Review of allReviews) {
+
+       let Htmlrev = `
+
+       <div class="rews">
+             <h3>${Review.username}</h3>
+             <div class="stars">
+             ${Reviews(maxrev,Review.rating)}
+             </div>
+             <div class="comment">
+                <p>${Review.comment}</p>
+             </div>
+          </div>
+   `;
+   document.querySelector('#profile-tab-pane').innerHTML += Htmlrev;
+   }
 }
 
 DysplatDetals();
@@ -224,5 +244,170 @@ document.querySelector('.cartoutput').innerHTML += HtmlCart;
 
 //  getallcard
  Mycart();
+
+ 
+ async function GetSearchCat(){
+  if (Segment() !== 'search.html') {
+    return false;
+  }
+
+  let Data = await CategyWithSub();
+ 
+ 
+  let subcat = '';
+  for (const Cat of Data) {
+
+    for (const Subc of Cat.Subcat) {
+       
+      subcat += `<li><a href="#" data-subid="${Subc.id}">${Subc.name}</a></li>`
+    
+    }
+
+  
+    
+    let HtmlCats = `
+    <li class="inside" data-id="${Cat.id}">
+    <a href="" data-cat="${Cat.id}">${Cat.name}  </a>
+     <ul>
+        ${subcat}
+     </ul>
+</li>
+    `;
+   document.querySelector('.category').innerHTML += HtmlCats;
+  }
+
+  let allSubcat = document.querySelectorAll('.inside ul li a');
+
+ 
+
+  allSubcat.forEach(el=>{
+    el.addEventListener('click' , function(e){
+      e.preventDefault();
+      let curr = document.querySelector('.curr');
+      curr?.classList.remove('curr')
+      this.classList.add('curr')
+    })
+  })
+
+  let catlist = document.querySelectorAll(".inside > a"); //category link
+
+for (const el of catlist) {
+  el.addEventListener("click", function (e) {
+    e.preventDefault();
+    let active = document.querySelector(".show");
+    if (this.parentElement.children[1].classList[0] != "show") {
+      active?.classList.remove("show");
+    }
+    this.parentElement.children[1].classList.toggle("show");
+  });
+}
+
+  let Brands = await GetBrand();
+
+  for (const brand of Brands) {
+    let HtmlBrand = `
+    <div class="form-check">
+            <input class="form-check-input" type="radio" name="brandId" value="${brand.id}" id="chk${brand.id}">
+            <label class="form-check-label" for="chk${brand.id}">
+                ${brand.name}
+            </label>
+          </div>
+    `;
+    document.querySelector('.bybrand').innerHTML += HtmlBrand;
+  }
+
+ }
+
+//  search page cat
+ GetSearchCat();
+
+
+ function SetStar(){
+    let allstar = document.querySelectorAll('.star img');
+    allstar.forEach(el=>{
+      el.addEventListener('click', function(){
+        let active = document.querySelector('img.active');
+        active?.classList.remove('active')
+        this.classList.add('active')
+      })
+    })
+
+ }
+
+ SetStar();
+
+async function Submit(){
+
+  let Sb = document.querySelector('.btn-ok');
+  Sb?.addEventListener('click', async function(e){
+  e.preventDefault();
+  LoadProd();
+  })
+
+ 
+  window.addEventListener('load', async function(e){
+  e.preventDefault();
+    LoadProd();
+  })
+
+}
+
+Submit();
+
+async function LoadProd(){
+  if (Segment() !== 'search.html') {
+    return false;
+  }
+  document.querySelector('#innerSearch').innerHTML = '';
+  let CatID = document.querySelector('.show')?.parentElement.getAttribute('data-id');
+  let SubID = document.querySelector('.curr')?.getAttribute('data-subid');
+  let BrandID = document.querySelector('[name="brandId"]:checked')?.value;
+  let MinPrice = document.querySelector('#min')?.value;
+  let MaxPrice = document.querySelector('#max')?.value;
+  let Star = document.querySelector('img.active')?.getAttribute('data-star');
+
+  let obj = {
+    categoryId:CatID,
+    subCategoryId:SubID,
+    brandId:BrandID,
+    priceFrom:MinPrice,
+    priceUntil:MaxPrice,
+    avgRating:Star
+  }
+
+  let QueryStr = '?' + new URLSearchParams(obj).toString();
+ 
+   let Prods = await BaseFilter(QueryStr);
+   let maxrev = Math.ceil(Math.max(...Prods.map(o => o.reviewsAvg)))
+ 
+   for (const Product of Prods) {
+
+       let HtmlProd = `
+
+       <div class="row prods">
+       <div class="col-lg-3 ps-lg-0">
+           <img class="prodimg" src="${'data:image/png;base64'+Product.pic}" alt="">
+       </div>
+       <div class="col-lg-5">
+          <div class="text-body">
+          <h2><a href="detals.html?${Product.id}"> ${Product.name} </a></h2>
+               <div class="star">
+               ${Reviews(maxrev,Product.reviewsAvg)}
+                   </div>
+                   <small>Reviews ${Product.reviewsCount}</small>
+          </div>
+       </div>
+       <div class="col-lg-4">
+           <div class="price-sec">
+               <p class="mb-0">${Product.price} GEL</p>
+               <button class="btn addcard">კალათაში დამატება</button>
+           </div>
+       </div>
+   </div>
+ 
+   `;
+   document.querySelector('#innerSearch').innerHTML += HtmlProd;
+   }
+}
 
  
