@@ -7,6 +7,7 @@ import {
   CartDelate,
   GetBrand,
   GeReview,
+  AddCart,
   BaseFilter
  } from "./module/http.js";
 import { Reviews , Segment } from "./module/helpers.js";
@@ -98,6 +99,7 @@ if(Segment().split('?')[0] !== 'detals.html'){
   let price = document.querySelector('.price');
   let descr = document.querySelector('.prodinfo p');
   let tabtxt = document.querySelector('.tabp');
+  document.querySelector('.addcard').setAttribute('data-id', Product.id);
    title.innerText = Product.name;
    price.innerText = Product.price + ' ₾ ';
    img.src = Product.pic;
@@ -138,7 +140,7 @@ DysplatDetals();
   for (const Cart of Carts) {
 
     let HtmlCart = `
-    <div class="row prods">
+    <div class="row prods" data-remove='${Cart.id}'>
     <div class="col-lg-3 ps-lg-0">
       <img
         class="prodimg"
@@ -222,20 +224,30 @@ document.querySelector('.cartoutput').innerHTML += HtmlCart;
   btn.addEventListener('click', async function(){
        let id = this.getAttribute('data-cartid');
        let oper = this.getAttribute('data-operator');
-       let Count  = document.querySelector('.update span').innerText;
-       let CountCart  = oper == '+' ? Number(Count) + 1 : Count - 1
-       document.querySelector('.update span').innerText = CountCart;
+       let Count  = this.parentElement.children[1].innerText;
+       let CountCart  = oper == '+' ? Number(Count) + 1 : Number(Count) - 1
+       this.parentElement.children[1].innerText = CountCart;
        let res = await CartUpdate(id, CountCart);
-        console.log(res);
+       
   })
  }
 
  for (const btnrem of Removebtn) {
   btnrem.addEventListener('click', async function(){
+       let conf = confirm('დასტური');
+       if (!conf) {
+         return false
+       }  
        let id = this.getAttribute('data-cartid');
-      
        let res = await CartDelate(id);
-       console.log(res);
+       if (res.status == 'success') {
+      
+       document.querySelector(`[data-remove="${id}"]`).remove();
+     
+       }
+      
+   
+ 
   })
  }
 
@@ -245,7 +257,27 @@ document.querySelector('.cartoutput').innerHTML += HtmlCart;
 //  getallcard
  Mycart();
 
- 
+ async function AddBasket(){
+   let addCard = document.querySelector('.addcard');
+  if (Segment().split('?')[0] !== 'detals.html') {
+    return false;
+  }
+
+  addCard.addEventListener('click', async function(){
+      let id = this.getAttribute('data-id');
+      let res = await AddCart(id);
+      if (res.status == "success") {
+         this.disabled = true;
+         this.innerText = 'დამატებულია'
+      }
+  })
+
+    
+ }
+
+ //addcart
+ AddBasket();
+
  async function GetSearchCat(){
   if (Segment() !== 'search.html') {
     return false;

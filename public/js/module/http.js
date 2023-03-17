@@ -1,7 +1,9 @@
 import { Reviews , Segment } from "./helpers.js";
 
+const ApiUrl = 'https://stepprojects.ge/'
+
 export async function CategyWithSub() {
-  let AllCat = await fetch("https://stepprojects.ge/rest/categories", {
+  let AllCat = await fetch(ApiUrl + "rest/categories", {
     method: "GET",
   });
 
@@ -9,7 +11,7 @@ export async function CategyWithSub() {
 
   for (const Cat of JsonCat) {
     let CatSub = await fetch(
-      "https://stepprojects.ge/rest/subCategories?categoryId=" + Cat.id,
+      ApiUrl + "rest/subCategories?categoryId=" + Cat.id,
       {
         method: "GET",
       }
@@ -29,7 +31,7 @@ export async function CategyWithSub() {
 }
 
 export async function GetAllProduct() {
-  let Products = await fetch(" https://stepprojects.ge/rest/products", {
+  let Products = await fetch(ApiUrl + "rest/products", {
     method: "GET",
   });
 
@@ -40,7 +42,7 @@ export async function GetAllProduct() {
 export async function GetDetalsProduct() {
     let id = Segment().split('?')[1];
  
-    let Products = await fetch("https://stepprojects.ge/rest/product/"+id, {
+    let Products = await fetch(ApiUrl + "rest/product/"+id, {
       method: "GET",
     });
   
@@ -50,7 +52,7 @@ export async function GetDetalsProduct() {
   export async function GeReview() {
     let id = Segment().split('?')[1];
  
-    let Products = await fetch(`https://stepprojects.ge/rest/product/${id}/getReviews`, {
+    let Products = await fetch(`${ApiUrl}rest/product/${id}/getReviews`, {
       method: "GET",
     });
   
@@ -59,14 +61,29 @@ export async function GetDetalsProduct() {
 
 
   export async function GetCart() {
-    let Carts = await fetch("https://stepprojects.ge/rest/getBasket", {
+    let Carts = await fetch(ApiUrl + "rest/getBasket", {
       method: "GET",
     });
    return await Carts.json();
   }
 
+  export async function AddCart(id) {
+    let Carts = await fetch(ApiUrl + "rest/addToBasket", {
+      method: "POST",
+      headers:{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body:JSON.stringify({
+        "productId":id,
+        "quantity": 1
+      })
+    });
+   return await Carts.json();
+  }
+
   export async function CartUpdate(id, quantity)  {
-    let Respons = await fetch(`https://stepprojects.ge/rest/basket/${id}/update?quantity=${quantity}`, {
+    let Respons = await fetch(`${ApiUrl}rest/basket/${id}/update?quantity=${quantity}`, {
       method:'PUT',
       
     })
@@ -75,7 +92,7 @@ export async function GetDetalsProduct() {
   }
 
   export async function CartDelate(id)  {
-    let Respons = await fetch(`https://stepprojects.ge/rest/basket/${id}/remove`, {
+    let Respons = await fetch(`${ApiUrl}rest/basket/${id}/remove`, {
       method: "DELETE",
 
       headers:{
@@ -88,7 +105,7 @@ export async function GetDetalsProduct() {
 
 
   export async function GetBrand()  {
-    let Brands = await fetch(`https://stepprojects.ge/rest/brands`, {
+    let Brands = await fetch(`${ApiUrl}rest/brands`, {
       method: "GET",
  
     });
@@ -98,7 +115,7 @@ export async function GetDetalsProduct() {
 
 
   export async function BaseFilter(query)  {
-    let Response = await fetch(`https://stepprojects.ge/rest/products`+query, {
+    let Response = await fetch(`${ApiUrl}rest/products`+query, {
       method: "GET",
  
     });
