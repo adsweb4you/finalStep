@@ -613,6 +613,9 @@ form.order .makeorder {
   #stepcarusel .carousel-item {
     height: 370px;
   }
+  .content {
+    --bs-gutter-x: 1.5rem;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
