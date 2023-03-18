@@ -417,6 +417,15 @@ a {
   border-radius: 12px;
   background-color: #fb6f20;
 }
+.detals .feeddb {
+  display: block;
+  font-weight: 400;
+  font-size: 20px;
+  color: #f6f6f6;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: var(--bs-indigo);
+}
 .detals .prsec {
   margin-top: 114px;
 }
@@ -441,7 +450,7 @@ a {
 .nav-tabs .nav-item:first-child .nav-link {
   position: relative;
   right: -10px;
-  z-index: 9998;
+  z-index: 9;
 }
 
 .nav-tabs .nav-link:hover {

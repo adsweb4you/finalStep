@@ -54,11 +54,8 @@
     <section class="detals">
       <div class="container">
         <div class="row">
-          <div class="col-lg-5">
-            <img class="poste"
-              src=" "
-              alt=""
-            />
+          <div class="col-lg-5" id="poster">
+            
           </div>
           <div class="col-lg-7">
             <div class="prodinfo">
@@ -73,7 +70,10 @@
                 <div class="col-lg-4">
                   <p class="price"></p>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8 d-flex align-items-start">
+                  <button type="button" class="btn  me-4 feeddb  " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    შეფასება
+                  </button>
                   <button class="btn addcard">კალათაში დამატება</button>
                 </div>
               </div>
@@ -138,7 +138,51 @@
       </div>
     </section>
     <!-- end  detals -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">შეფასება</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" class="feddbc"> 
+          <input type="hidden" id="prodid">
+        <div class="filltblock  ">
+          <p class="fillter-name">Rating</p>
+          <div class="star mb-3">
+              <img data-star="1" src="public/images/icons/star.svg" class="active" alt="">
+              <img data-star="2" src="public/images/icons/starempt.svg" alt="">
+              <img data-star="3" src="public/images/icons/starempt.svg" alt="">
+              <img data-star="4" src="public/images/icons/starempt.svg" alt="">
+              <img data-star="5" src="public/images/icons/starempt.svg" alt="">
+          </div>
 
+          <div class="mb-3">
+            <label for="names" class="form-label">სახელი გვარი</label>
+            <input type="text" class="form-control" required id="names" placeholder="სახელი გვარი">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">ტექსტი</label>
+            <textarea class="form-control" id="text" required rows="3"></textarea>
+          </div>
+
+      </div>
+
+      <button type="submit  " class="btn btn-info me-4 feedb  ">
+        შეფასება
+      </button>
+
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">დახურვა</button>
+     
+      </div>
+    </div>
+  </div>
+</div>
     <!-- bootstrap js -->
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <!-- costum js -->

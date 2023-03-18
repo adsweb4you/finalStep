@@ -472,10 +472,22 @@ a {
     background-color: #fb6f20;
   }
 
+  .feeddb{
+    display: block;
+    font-weight: 400;
+    font-size: 20px;
+    color: $text_color;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background-color: var(--bs-indigo);
+  }
+
   .prsec{
     margin-top: 114px;
   }
 }
+
+ 
 
 .nav-tabs 
 .nav-item 
@@ -505,7 +517,7 @@ a {
 .nav-link{
   position: relative;
   right: -10px;
-  z-index: 9998;
+  z-index: 9;
 }
 
  .nav-tabs .nav-link:hover {

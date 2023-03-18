@@ -121,3 +121,19 @@ export async function GetDetalsProduct() {
     });
    return await Response.json();
   }
+
+  export async function Setrew(data)  {
+    let Response = await fetch(ApiUrl + `rest/product/${data.id}/postReview`, {
+      method: "POST",
+      headers:{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body:JSON.stringify({
+        "userName":data.userName,
+        "rating": data.reviews,
+        "comment":data.text
+      })
+    });
+   return await Response.json();
+  }

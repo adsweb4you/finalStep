@@ -7,6 +7,7 @@ import {
   CartDelate,
   GetBrand,
   GeReview,
+  Setrew,
   AddCart,
   BaseFilter
  } from "./module/http.js";
@@ -35,12 +36,12 @@ async function DisplayCat() {
   for (const Cat of Data) {
 
     for (const Subc of Cat.Subcat) {
-      subcat += ` <li><a href="${Subc.id}">${Subc.name}</a></li>`
+      subcat += ` <li><a href="search.html">${Subc.name}</a></li>`
     }
 
     let HtmlCats = `
     <li>
-    <a href="${Cat.id}">${Cat.name} <img src="public/images/icons/right.svg" alt=""></a>
+    <a href="search.html">${Cat.name} <img src="public/images/icons/right.svg" alt=""></a>
      <ul>
         ${subcat}
      </ul>
@@ -60,13 +61,15 @@ async function DisplayProd() {
   let Products = await GetAllProduct();
  
  let maxrev = Math.ceil(Math.max(...Products.map(o => o.reviewsAvg)))
- 
+ let i = 0;
     for (const Product of Products) {
-
+      let image = new Image();
+      let src = Product.pic != null ? 'data:image/png;base64,'+ Product.pic : 'public/images/placeholder.png'
+      image.src =  src;
         let HtmlProd = `
         <div class="col-lg-4">
         <div class="product">
-          <img src="${'data:image/png;base64'+Product.pic}" alt="">
+          
           <div class="prod-body">
               <h2><a href="detals.html?${Product.id}"> ${Product.name} </a></h2>
                   <div class="star">
@@ -77,7 +80,10 @@ async function DisplayProd() {
         </div>
       </div>
     `;
+     
     document.querySelector('.content').innerHTML += HtmlProd;
+    document.querySelectorAll('.product')[i].prepend(image)
+    i++;
     }
  
 }
@@ -95,14 +101,20 @@ if(Segment().split('?')[0] !== 'detals.html'){
   let Product = await GetDetalsProduct();  
  
   let title = document.querySelector('.prodinfo h1');
-  let img = document.querySelector('.poste');
+  let img = document.querySelector('#poster');
   let price = document.querySelector('.price');
   let descr = document.querySelector('.prodinfo p');
+  document.querySelector('#prodid').value = Product.id;
   let tabtxt = document.querySelector('.tabp');
   document.querySelector('.addcard').setAttribute('data-id', Product.id);
    title.innerText = Product.name;
    price.innerText = Product.price + ' ₾ ';
-   img.src = Product.pic;
+
+   let image = new Image();
+   let src = Product.pic != null ? 'data:image/png;base64,'+ Product.pic : 'public/images/placeholder.png'
+   image.src =  src;
+   img.appendChild(image);
+   
    descr.innerText = Product.description;
    tabtxt.innerText = Product.description;
 
@@ -136,17 +148,16 @@ DysplatDetals();
     return false;
   }
   let Carts = await GetCart(); 
-  
+  let i = 0;
   for (const Cart of Carts) {
-
+    let image = new Image();
+    let src = Cart.product.pic != null ? 'data:image/png;base64,'+ Cart.product.pic : 'public/images/placeholder.png'
+      image.src =  src;
+      image.classList.add('prodimg')
     let HtmlCart = `
     <div class="row prods" data-remove='${Cart.id}'>
-    <div class="col-lg-3 ps-lg-0">
-      <img
-        class="prodimg"
-        src="${Cart.product.pic}"
-        alt=""
-      />
+    <div class="col-lg-3 ps-lg-0 cartimg"  >
+      
     </div>
     <div class="col-lg-4">
       <div class="text-body">
@@ -216,7 +227,8 @@ DysplatDetals();
   </div>
 `;
 document.querySelector('.cartoutput').innerHTML += HtmlCart;
- 
+document.querySelectorAll('.cartimg')[i].appendChild(image)
+i++;
  let CartUpdatebtn = document.querySelectorAll('.update button');
  let Removebtn = document.querySelectorAll('.btnremove');
 
@@ -259,7 +271,8 @@ document.querySelector('.cartoutput').innerHTML += HtmlCart;
 
  async function AddBasket(){
    let addCard = document.querySelector('.addcard');
-  if (Segment().split('?')[0] !== 'detals.html') {
+   let route = Segment().split('?')[0];
+  if (route !== 'detals.html') {
     return false;
   }
 
@@ -331,6 +344,7 @@ for (const el of catlist) {
       active?.classList.remove("show");
     }
     this.parentElement.children[1].classList.toggle("show");
+ 
   });
 }
 
@@ -411,14 +425,17 @@ async function LoadProd(){
  
    let Prods = await BaseFilter(QueryStr);
    let maxrev = Math.ceil(Math.max(...Prods.map(o => o.reviewsAvg)))
- 
+   let i = 0;
    for (const Product of Prods) {
-
+    let image = new Image();
+    let src = Product.pic != null ? 'data:image/png;base64,'+ Product.pic : 'public/images/placeholder.png'
+     image.src =  src;
+     image.classList.add('prodimg');
        let HtmlProd = `
 
        <div class="row prods">
-       <div class="col-lg-3 ps-lg-0">
-           <img class="prodimg" src="${'data:image/png;base64'+Product.pic}" alt="">
+       <div class="col-lg-3 ps-lg-0 insimgs">
+          
        </div>
        <div class="col-lg-5">
           <div class="text-body">
@@ -432,14 +449,104 @@ async function LoadProd(){
        <div class="col-lg-4">
            <div class="price-sec">
                <p class="mb-0">${Product.price} GEL</p>
-               <button class="btn addcard">კალათაში დამატება</button>
+               <button class="btn addcard" data-id="${Product.id}">კალათაში დამატება</button>
            </div>
        </div>
    </div>
  
    `;
    document.querySelector('#innerSearch').innerHTML += HtmlProd;
+   document.querySelectorAll('.insimgs')[i].appendChild(image)
+i++;
+
+ 
+ 
+
+ 
+
+
+
    }
+ let addCard = document.querySelectorAll('.addcard');
+ 
+addCard.forEach(el=>{
+  el.addEventListener('click', async function(){
+  let id = this.getAttribute('data-id');
+  let res = await AddCart(id);
+  if (res.status == "success") {
+     this.disabled = true;
+     this.innerText = 'დამატებულია'
+  }
+})
+})
 }
 
  
+// starhover
+
+function starhover(){
+
+  if (Segment() !== 'search.html' && Segment().split('?')[0] !== 'detals.html') {
+    return false;
+  } 
+  let stars = document.querySelectorAll('.star img');
+
+  stars.forEach((el, index)=>{
+    el.addEventListener('mousemove',function(){
+   
+      let ind = this.getAttribute('data-star')
+ 
+      stars.forEach((st,index)=>{
+         if ((index + 1) <= ind) {
+        
+          st.src = 'public/images/icons/star.svg';
+         }else{
+          st.src = 'public/images/icons/starempt.svg';
+         }
+      })
+
+    })
+  })
+  stars.forEach(el=>{
+    el.addEventListener('mouseleave',function(){
+      let ind = document.querySelector('.star img.active')?.getAttribute('data-star')
+ 
+      stars.forEach((st,index)=>{
+         if ((index + 1) <= ind) {
+ 
+          st.src = 'public/images/icons/star.svg';
+         }else{
+          st.src = 'public/images/icons/starempt.svg';
+         }
+      })
+    })
+  })
+}
+
+starhover();
+
+async function setfeed(){
+  let revCount = document.querySelector('.star  img.active').getAttribute('data-star');
+  let username = document.querySelector('#names').value;
+  let prodid = document.querySelector('#prodid').value;
+  let text = document.querySelector('#text').value;
+
+  let res = await Setrew({
+    userName:username,
+    id:prodid,
+    reviews:revCount,
+    text:text,
+  })
+
+  if (res.status == 'success') {
+    window.location.reload();
+  }
+ 
+}
+
+ 
+
+document.querySelector('.feddbc').addEventListener('submit', function(e){
+  e.preventDefault();
+  setfeed();
+})
