@@ -41,4 +41,13 @@
  
         margin-top: 28px;
     }
+
+    .prodcat {
+        --bs-gutter-x: inherit;
+    }
+
+    #stepcarusel .carousel-item {
+        
+        height: 370px;
+    }
 }

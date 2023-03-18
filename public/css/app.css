@@ -607,6 +607,12 @@ form.order .makeorder {
   .btn-ok {
     margin-top: 28px;
   }
+  .prodcat {
+    --bs-gutter-x: inherit;
+  }
+  #stepcarusel .carousel-item {
+    height: 370px;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
