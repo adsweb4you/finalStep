@@ -1,0 +1,44 @@
+@media (max-width:992px){
+    .category > li:not(.inside) ul {
+        transform: translateX(-2%);
+        z-index: 99999;
+    }
+
+    #stepcarusel .carousel-item .carusel-content {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+
+        a {
+ 
+            margin: 62px auto;
+        }
+    }
+    
+    #stepcarusel [data-bs-slide]{
+        display: none;
+    }
+
+    .livesearch {
+ 
+        margin-left: 0 !important;
+        input{
+        width: 100%;
+    }
+    } 
+    .navbar-collapse {
+        flex-basis: auto;
+        align-items: center;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 25px 0;
+
+    }
+
+    .btn-ok {
+ 
+        margin-top: 28px;
+    }
+}

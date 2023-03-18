@@ -67,7 +67,7 @@ async function DisplayProd() {
       let src = Product.pic != null ? 'data:image/png;base64,'+ Product.pic : 'public/images/placeholder.png'
       image.src =  src;
         let HtmlProd = `
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-md-6 col-12">
         <div class="product">
           
           <div class="prod-body">
@@ -546,7 +546,7 @@ async function setfeed(){
 
  
 
-document.querySelector('.feddbc').addEventListener('submit', function(e){
+document.querySelector('.feddbc')?.addEventListener('submit', function(e){
   e.preventDefault();
   setfeed();
 })
