@@ -239,7 +239,7 @@ i++;
        let Count  = this.parentElement.children[1].innerText;
        let CountCart  = oper == '+' ? Number(Count) + 1 : Number(Count) - 1
        this.parentElement.children[1].innerText = CountCart;
-       let res = await CartUpdate(id, 1);
+       let res = await CartUpdate(id, CountCart);
        
   })
  }
